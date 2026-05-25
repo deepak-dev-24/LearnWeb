@@ -200,28 +200,12 @@ export default function Signup() {
               {/* Terms */}
               <div>
                 <label className="flex items-start gap-3 cursor-pointer">
-                  <div className="relative mt-0.5">
-                    <input
-                      type="checkbox"
-                      checked={acceptTerms}
-                      onChange={(e) => { setAcceptTerms(e.target.checked); setTermsError(false) }}
-                      className="sr-only"
-                    />
-                    <div
-                      className="w-4 h-4 rounded flex items-center justify-center transition-all"
-                      style={{
-                        backgroundColor: acceptTerms ? '#06b6d4' : '#22252e',
-                        border: `1px solid ${acceptTerms ? '#06b6d4' : termsError ? '#f87171' : '#2e3140'}`
-                      }}
-                      onClick={() => { setAcceptTerms(!acceptTerms); setTermsError(false) }}
-                    >
-                      {acceptTerms && (
-                        <svg className="w-2.5 h-2.5 text-black" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                          <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-                        </svg>
-                      )}
-                    </div>
-                  </div>
+                  <input
+                    type="checkbox"
+                    checked={acceptTerms}
+                    onChange={(e) => { setAcceptTerms(e.target.checked); setTermsError(false) }}
+                    className="mt-0.5 w-4 h-4 rounded cursor-pointer accent-cyan-500"
+                  />
                   <span className="text-xs leading-relaxed" style={{ color: '#6b7280' }}>
                     I agree to the{' '}
                     <a href="#" style={{ color: '#06b6d4' }}>Terms of Service</a>
@@ -235,7 +219,6 @@ export default function Signup() {
                   </p>
                 )}
               </div>
-
               {/* Error */}
               {error && (
                 <div className="flex items-center gap-2 px-4 py-3 rounded-xl text-sm"
