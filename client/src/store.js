@@ -5,6 +5,7 @@ import lecturesReducer from './features/lectures/lectureSlice'
 import feedReducer from './features/feed/feedSlice'
 import planReducer from './features/plan/planSlice'   // ← ADD THIS
 import studySessionReducer from './features/studySession/studySessionSlice'
+import notesReducer from './features/notes/noteSlice'
 
 export const store = configureStore({
   reducer: {
@@ -14,5 +15,6 @@ export const store = configureStore({
     feed: feedReducer,
     plan: planReducer,   // ← ADD THIS
     studySession: studySessionReducer,
+    notes: notesReducer,
   },
 })

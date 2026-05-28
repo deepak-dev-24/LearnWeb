@@ -10,6 +10,7 @@ const fileRouter = require('./routes/file.routes');
 const feedRouter = require('./routes/feed.routes');
 const planRouter = require('./routes/plan.routes');
 const studySessionRouter = require('./routes/studySession.Routes');
+const noteRouter = require('./routes/note.Routes')
 
 const app = express();
 
@@ -33,6 +34,7 @@ app.use('/api/files', fileRouter);
 app.use('/api/feed', feedRouter);
 app.use('/api/plans', planRouter);
 app.use('/api/study-sessions', studySessionRouter);
+app.use('/api/notes', noteRouter)
 
 // Root Route
 app.get('/', (req, res) => {

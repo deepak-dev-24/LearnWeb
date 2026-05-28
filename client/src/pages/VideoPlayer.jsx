@@ -2,6 +2,7 @@ import { useMemo, useState, useEffect, useRef } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { useSelector, useDispatch } from 'react-redux'
 import { fetchLectures } from '../features/lectures/lectureSlice'
+import { fetchNote, saveNote, deleteNote, clearNote } from '../features/notes/noteSlice'
 import {
   FiArrowLeft, FiClock, FiEdit3, FiPlay, FiPause,
   FiRefreshCw, FiCheck, FiAlertCircle,
@@ -16,7 +17,7 @@ const PRESETS = [
   { label: 'Custom', value: null },
 ]
 
-// ── Focus Timer Component
+// ── Focus Timer Component (unchanged from old)
 const FocusTimer = () => {
   const [selected, setSelected] = useState(0)
   const [customMin, setCustomMin] = useState('')
@@ -199,22 +200,51 @@ const FocusTimer = () => {
   )
 }
 
-// ── Notes Component
-const Notes = ({ lectureId }) => {
-  const storageKey = `notes_${lectureId}`
-  const [text, setText] = useState(() => localStorage.getItem(storageKey) || '')
-  const [saved, setSaved] = useState(false)
-  const saveRef = useRef(null)
+// ── Notes Component — MongoDB version
+const Notes = ({ lectureId, courseId }) => {
+  const dispatch = useDispatch()
+  const { current: note, saving, loading } = useSelector((s) => s.notes)
 
+  const [text, setText] = useState('')
+  const [showSaved, setShowSaved] = useState(false)
+  const saveTimerRef = useRef(null)
+  const initialLoadRef = useRef(false)
+
+  // Fetch note from DB on mount
+  useEffect(() => {
+    initialLoadRef.current = false
+    dispatch(fetchNote(lectureId))
+    return () => {
+      clearTimeout(saveTimerRef.current)
+      dispatch(clearNote())
+    }
+  }, [lectureId, dispatch])
+
+  // Populate textarea when note loads from DB
+  useEffect(() => {
+    if (!initialLoadRef.current) {
+      setText(note?.text || '')
+      initialLoadRef.current = true
+    }
+  }, [note])
+
+  // Auto-save 1 second after user stops typing
   const handleChange = (e) => {
-    setText(e.target.value)
-    setSaved(false)
-    clearTimeout(saveRef.current)
-    saveRef.current = setTimeout(() => {
-      localStorage.setItem(storageKey, e.target.value)
-      setSaved(true)
-      setTimeout(() => setSaved(false), 1500)
-    }, 800)
+    const val = e.target.value
+    setText(val)
+    clearTimeout(saveTimerRef.current)
+    saveTimerRef.current = setTimeout(async () => {
+      await dispatch(saveNote({ lectureId, courseId, text: val }))
+      setShowSaved(true)
+      setTimeout(() => setShowSaved(false), 2000)
+    }, 1000)
+  }
+
+  // Clear note and delete from DB
+  const handleClear = () => {
+    clearTimeout(saveTimerRef.current)
+    setText('')
+    dispatch(deleteNote(lectureId))
   }
 
   const wordCount = text.trim() ? text.trim().split(/\s+/).length : 0
@@ -222,29 +252,59 @@ const Notes = ({ lectureId }) => {
   return (
     <div className="rounded-2xl p-5 flex flex-col flex-1"
       style={{ backgroundColor: '#1a1d24', border: '1px solid #2a2d35' }}>
+
+      {/* Header */}
       <div className="flex items-center justify-between mb-3">
         <div className="flex items-center gap-2">
           <FiEdit3 className="w-3.5 h-3.5 text-amber-400" />
           <span className="text-xs font-mono uppercase tracking-widest text-slate-400">My Notes</span>
+          <span className="text-xs font-mono text-slate-700">☁️</span>
         </div>
         <div className="flex items-center gap-2">
-          {saved && (
-            <span className="flex items-center gap-1 text-xs text-emerald-400 font-mono">
+          {saving && (
+            <span className="text-xs font-mono text-slate-600">saving...</span>
+          )}
+          {showSaved && !saving && (
+            <span className="flex items-center gap-1 text-xs font-mono text-emerald-400">
               <FiCheck className="w-3 h-3" /> saved
             </span>
           )}
           <span className="text-xs font-mono text-slate-600">{wordCount}w</span>
         </div>
       </div>
-      <textarea value={text} onChange={handleChange}
-        placeholder={`📝 Write anything while watching...\n\n• Key points\n• Things to remember\n• Questions to revisit`}
-        className="flex-1 w-full text-slate-300 text-sm leading-relaxed resize-none outline-none placeholder-slate-700 font-mono"
-        style={{ backgroundColor: 'transparent', minHeight: '180px', caretColor: '#06b6d4' }}
-      />
-      <div className="pt-3 mt-2 flex items-center justify-between" style={{ borderTop: '1px solid #22252e' }}>
-        <span className="text-slate-700 text-xs font-mono">auto-saves as you type</span>
-        <button onClick={() => { setText(''); localStorage.removeItem(storageKey) }}
-          className="text-xs text-slate-700 hover:text-red-400 transition-colors font-mono">clear</button>
+
+      {/* Loading */}
+      {loading && (
+        <div className="flex items-center justify-center py-8">
+          <div className="w-5 h-5 border-2 border-slate-700 border-t-amber-400 rounded-full animate-spin" />
+        </div>
+      )}
+
+      {/* Textarea */}
+      {!loading && (
+        <textarea
+          value={text}
+          onChange={handleChange}
+          placeholder={`📝 Write anything while watching...\n\n• Key points\n• Things to remember\n• Questions to revisit\n\nSyncs across all devices ☁️`}
+          className="flex-1 w-full text-slate-300 text-sm leading-relaxed resize-none outline-none placeholder-slate-700 font-mono"
+          style={{
+            backgroundColor: 'transparent',
+            minHeight: '180px',
+            caretColor: '#f59e0b',
+          }}
+        />
+      )}
+
+      {/* Footer */}
+      <div className="pt-3 mt-2 flex items-center justify-between"
+        style={{ borderTop: '1px solid #22252e' }}>
+        <span className="text-slate-700 text-xs font-mono">auto-saves · syncs everywhere</span>
+        <button
+          onClick={handleClear}
+          className="text-xs text-slate-700 hover:text-red-400 transition-colors font-mono"
+        >
+          clear
+        </button>
       </div>
     </div>
   )
@@ -256,7 +316,7 @@ export default function VideoPlayer() {
   const dispatch = useDispatch()
   const { byCourseId } = useSelector((s) => s.lectures)
 
-  // ── THE FIX: if lectures not in Redux, fetch them ──
+  // Fetch lectures if not in Redux yet
   useEffect(() => {
     if (!byCourseId[id] || byCourseId[id].length === 0) {
       dispatch(fetchLectures(id))
@@ -270,9 +330,6 @@ export default function VideoPlayer() {
 
   const [loadError, setLoadError] = useState(false)
   const [focusMode, setFocusMode] = useState(false)
-  const [fetching, setFetching] = useState(false)
-
-  // Track if we are still loading
   const isLoading = !byCourseId[id]
 
   // Tab visibility warning
@@ -295,7 +352,7 @@ export default function VideoPlayer() {
     return () => window.removeEventListener('keydown', onKey)
   }, [focusMode])
 
-  // ── Show loading while fetching ──
+  // Loading state
   if (isLoading) {
     return (
       <div className="min-h-screen flex flex-col items-center justify-center gap-4"
@@ -306,7 +363,7 @@ export default function VideoPlayer() {
     )
   }
 
-  // ── Lecture not found after fetch ──
+  // Lecture not found
   if (!lecture) {
     return (
       <div className="min-h-screen flex items-center justify-center" style={{ backgroundColor: '#111318' }}>
@@ -333,7 +390,7 @@ export default function VideoPlayer() {
 
   const VideoContainer = ({ children }) => (
     <div className="relative w-full rounded-xl overflow-hidden shadow-2xl"
-      style={{ aspectRatio: focusMode ? 'unset' : '16/9', height: focusMode ? '100%' : 'auto', backgroundColor: '#000' }}>
+      style={{ aspectRatio: '16/9', backgroundColor: '#000' }}>
       {children}
     </div>
   )
@@ -445,12 +502,12 @@ export default function VideoPlayer() {
           <span className="text-slate-700 font-mono ml-1">esc</span>
         </button>
 
-        <div className="flex-1 flex flex-col justify-center p-6 pr-3" style={{ height: '100vh', overflow: 'hidden' }}>
+        <div className="flex-1 flex flex-col justify-center p-6 pr-3">
           <div className="mb-3">
             <span className="text-cyan-400 text-xs font-mono uppercase tracking-widest">📂 now watching</span>
             <h1 className="text-lg font-black text-slate-100 leading-tight mt-1 line-clamp-1">{lecture.title}</h1>
           </div>
-          <div className="rounded-2xl overflow-hidden flex-1" style={{ border: '1px solid #2a2d35', height: 'calc(100vh - 120px)' }}>
+          <div className="rounded-2xl overflow-hidden" style={{ border: '1px solid #2a2d35' }}>
             {renderVideoPlayer(lecture.videoUrl)}
           </div>
         </div>
@@ -465,7 +522,7 @@ export default function VideoPlayer() {
             </div>
           )}
           <FocusTimer />
-          <Notes lectureId={lectureId} />
+          <Notes lectureId={lectureId} courseId={id} />
         </div>
       </div>
     )
@@ -536,7 +593,7 @@ export default function VideoPlayer() {
 
           <div className="w-full lg:w-80 xl:w-96 flex flex-col gap-4 shrink-0">
             <FocusTimer />
-            <Notes lectureId={lectureId} />
+            <Notes lectureId={lectureId} courseId={id} />
             <Link to={`/courses/${id}`}
               className="flex items-center justify-center gap-2 py-2.5 rounded-xl text-sm font-semibold transition-all"
               style={{ backgroundColor: '#1a1d24', border: '1px solid #2a2d35', color: '#6b7280' }}
