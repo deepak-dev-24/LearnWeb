@@ -1,6 +1,6 @@
 <div align="center">
 
-# LearnWeb
+# 📚 LearnWeb
 
 **A personal, distraction-free study platform built for students who take learning seriously.**
 
@@ -8,15 +8,16 @@
 [![Backend API](https://img.shields.io/badge/Backend%20API-Render-10b981?style=for-the-badge&logo=render&logoColor=white)](https://learnweb-backend.onrender.com/api/health)
 [![MongoDB](https://img.shields.io/badge/Database-MongoDB%20Atlas-47A248?style=for-the-badge&logo=mongodb&logoColor=white)](https://www.mongodb.com/atlas)
 [![License](https://img.shields.io/badge/License-MIT-8b5cf6?style=for-the-badge)](./LICENSE)
+[![Node](https://img.shields.io/badge/Node.js->=18.0.0-339933?style=for-the-badge&logo=nodedotjs&logoColor=white)](https://nodejs.org/)
 
 <br/>
 
-> No ads. No recommendations. No infinite scroll.  
+> No ads. No recommendations. No infinite scroll.
 > Just you, your study material, and your progress.
 
 <br/>
 
-[🚀 Live Demo](https://learnweb-fawn.vercel.app/) · [📖 API Docs](#api-overview) · [🐛 Report Bug](https://github.com/deepak-dev-24/learnweb/issues) · [✨ Request Feature](https://github.com/deepak-dev-24/learnweb/issues)
+[🚀 Live Demo](https://learnweb-fawn.vercel.app/) · [📖 API Docs](#-api-overview) · [🐛 Report Bug](https://github.com/deepak-dev-24/LearnWeb/issues) · [✨ Request Feature](https://github.com/deepak-dev-24/LearnWeb/issues)
 
 </div>
 
@@ -24,7 +25,7 @@
 
 ## 📸 Screenshots
 
-> _Screenshots coming soon — add images to `/docs/screenshots/` and update paths below._
+> Add your screenshots inside `/docs/screenshots/` and they will appear here.
 
 | Landing Page | Dashboard | Video Player |
 |---|---|---|
@@ -38,75 +39,75 @@
 
 ## 📌 About The Project
 
-**LearnWeb** is not a course marketplace or an LMS. It is a **private, personal study workspace** designed for students who want to learn deeply without distractions.
+**LearnWeb** is not a course marketplace or an LMS. It is a **private, personal study workspace** built for students who want to learn deeply without distractions.
 
-The core idea is simple — modern learning platforms are designed to keep you scrolling, not studying. LearnWeb is the opposite: a focused environment where you organize your own material, watch lectures distraction-free, track every study session, and stay accountable to yourself.
+Modern learning platforms are designed to keep you scrolling — not studying. LearnWeb is the opposite. It gives you a clean, focused environment to organize your own material, watch lectures without interruption, track every study session, and stay accountable to yourself every single day.
 
 ### Core Philosophy
 
-- 🔒 **Private by default** — every folder, lecture, and session belongs only to you
+- 🔒 **Private by default** — every folder, lecture, note, and session belongs only to you
 - 🚫 **Zero distractions** — no ads, no recommendations, no infinite scroll
-- ⏱️ **Focus-first design** — Pomodoro timers and focus modes built into the study experience
-- 📊 **Progress-aware** — every session, task, and completed lecture is tracked
+- ⏱️ **Focus-first design** — Pomodoro timers and focus modes built directly into the study experience
+- 📊 **Progress-aware** — every session, task, and completed lecture is recorded and visible
 
 ---
 
 ## ✨ Features
 
 ### 📁 Study Folders
-- Create personal subject folders (DSA, Backend, Java, etc.)
+- Create personal subject folders — DSA, Backend, Java, anything
 - Upload custom thumbnails via Cloudinary
-- Circular progress ring shows lecture completion percentage
-- Per-folder goals saved locally for quick reference
-- Edit and delete folders with ownership enforcement
+- Circular progress ring showing lecture completion percentage
+- Per-folder study goals saved for quick reference
+- Edit and delete folders with strict ownership enforcement
 
-### 🎬 Lecture Management & Video Player
-- Add YouTube lectures to any folder
-- Distraction-free video player with no navbar or footer
+### 🎬 Lecture Management and Video Player
+- Add YouTube video links to any folder
+- Fully distraction-free player — no navbar, no footer, no suggestions
 - Supports YouTube, Vimeo, and MP4/WebM formats
-- **Focus Mode** — fullscreen video with nothing else on screen
-- **Pomodoro Timer** — 25 / 45 / 60 min presets + custom duration
-- Idle detection after 90 seconds of inactivity
-- Tab-switch warning when you leave the video
-- **Notes panel** — auto-saves to localStorage as you type, per-lecture
-- Mark lectures complete / incomplete (tracked per user)
+- **Focus Mode** — fullscreen video with everything else hidden
+- **Pomodoro Timer** — 25 / 45 / 60 min presets plus custom duration
+- Idle detection after 90 seconds with a nudge to refocus
+- Tab-switch warning banner when you leave the page
+- **Notes panel** — synced to database per user per lecture, accessible from any browser or device
+- Mark lectures complete or incomplete, tracked individually per user
 
 ### 📺 Study Feed
-- YouTube-style grid of all your lectures across all folders
-- Filter by folder name
+- YouTube-style grid showing all your lectures across all folders
+- Filter lectures by folder name
 - Real YouTube thumbnails auto-extracted from video URL
 - Click any lecture to jump directly into the video player
 
 ### ✅ Daily Plan
-- Create daily study tasks with text and time estimates
-- Mark tasks complete with timestamps
-- Visual progress bar and completion statistics
-- Confetti celebration when all tasks are done
-- 14-day task history with expandable day cards
+- Add daily study tasks with a description and time estimate
+- Check off tasks as you complete them, with timestamps saved
+- Visual progress bar and live completion statistics
+- Confetti animation when all tasks for the day are done
+- 14-day task history with expandable day-by-day cards
 
-### ⏱️ Offline Study (Pomodoro System)
-- 25-minute focused study sessions with 5-minute breaks
-- Animated SVG clock ring with particle effects
-- "Watching Eye" — animated presence to maintain focus accountability
-- Motivational instructor messages appear every 5 minutes
-- Tab-switch detection with a warning banner
-- After each session — reflection form:
+### ⏱️ Offline Study — Pomodoro System
+- 25-minute focused study sessions followed by 5-minute breaks
+- Large animated SVG clock ring with ambient particle effects
+- Animated "Watching Eye" to maintain a sense of accountability
+- Random motivational messages appear every 5 minutes during a session
+- Tab-switch detection with an instant warning banner
+- After every session a reflection form appears:
   - What did you study? (free text)
   - How focused were you? (Fully / Mostly / Not really)
-- Session data saved to database
-- Up to 4 sessions before auto-summary
-- Full study journal at `/study-history`
+- All session data saved to database
+- Automatically moves to summary after 4 sessions
+- Full study journal available at `/study-history`
 
 ### 📊 Dashboard
-- Real-time stats: folder count, total lectures, tasks completed this week
+- Live stats — folder count, total lectures, tasks completed this week
 - Quick action buttons for all major features
-- Personal study folder grid preview
+- Full study folder preview grid
 
-### 👤 Profile & Auth
+### 👤 Profile and Auth
 - JWT-based authentication with 7-day token expiry
-- Password reset via name + email verification
-- Persistent login across page refreshes
-- Clean profile page with account stats
+- Password reset via name and email verification — no OTP needed
+- Persistent login across page refreshes via localStorage
+- Clean profile page showing account information and workspace stats
 
 ---
 
@@ -117,9 +118,9 @@ The core idea is simple — modern learning platforms are designed to keep you s
 |---|---|
 | [React 18](https://react.dev/) | UI framework |
 | [Vite](https://vitejs.dev/) | Build tool and dev server |
-| [Redux Toolkit](https://redux-toolkit.js.org/) | Global state management (6 slices) |
+| [Redux Toolkit](https://redux-toolkit.js.org/) | Global state management — 7 slices |
 | [React Router v6](https://reactrouter.com/) | Client-side routing |
-| [Axios](https://axios-http.com/) | HTTP client with auth interceptor |
+| [Axios](https://axios-http.com/) | HTTP client with auth token interceptor |
 | [Tailwind CSS](https://tailwindcss.com/) | Utility-first styling |
 | [React Icons](https://react-icons.github.io/react-icons/) | Icon library |
 
@@ -127,20 +128,20 @@ The core idea is simple — modern learning platforms are designed to keep you s
 | Technology | Purpose |
 |---|---|
 | [Node.js](https://nodejs.org/) | Runtime environment |
-| [Express.js](https://expressjs.com/) | REST API framework (CommonJS) |
+| [Express.js](https://expressjs.com/) | REST API framework — CommonJS |
 | [MongoDB Atlas](https://www.mongodb.com/atlas) | Cloud database |
-| [Mongoose](https://mongoosejs.com/) | ODM for schema modeling |
-| [JSON Web Token](https://jwt.io/) | Authentication |
+| [Mongoose](https://mongoosejs.com/) | ODM for schema and model management |
+| [JSON Web Token](https://jwt.io/) | Stateless authentication |
 | [bcryptjs](https://github.com/dcodeIO/bcrypt.js) | Password hashing |
-| [Cloudinary](https://cloudinary.com/) | Image/media storage |
+| [Cloudinary](https://cloudinary.com/) | Image and media storage |
 | [Morgan](https://github.com/expressjs/morgan) | HTTP request logging |
 
 ### Deployment
 | Service | Purpose |
 |---|---|
-| [Vercel](https://vercel.com/) | Frontend hosting |
+| [Vercel](https://vercel.com/) | Frontend hosting with auto-deploy |
 | [Render](https://render.com/) | Backend API hosting |
-| [MongoDB Atlas](https://www.mongodb.com/atlas) | Database hosting |
+| [MongoDB Atlas](https://www.mongodb.com/atlas) | Cloud database hosting |
 
 ---
 
@@ -148,23 +149,24 @@ The core idea is simple — modern learning platforms are designed to keep you s
 
 ```
 LearnWeb/
-├── client/                          # React + Vite frontend
+├── client/                           # React + Vite frontend
 │   ├── public/
 │   └── src/
 │       ├── components/
-│       │   ├── ImageUpload.jsx      # Cloudinary upload component
-│       │   ├── Layout.jsx           # Passthrough layout wrapper
-│       │   └── ProtectedRoute.jsx   # JWT-based route guard
-│       ├── features/                # Redux Toolkit slices
+│       │   ├── ImageUpload.jsx       # Cloudinary upload component
+│       │   ├── Layout.jsx            # Passthrough layout wrapper
+│       │   └── ProtectedRoute.jsx    # JWT-based route guard
+│       ├── features/                 # Redux Toolkit — 7 slices
 │       │   ├── auth/authSlice.js
 │       │   ├── folder/folderSlice.js
 │       │   ├── lectures/lectureSlice.js
 │       │   ├── feed/feedSlice.js
+│       │   ├── note/noteSlice.js
 │       │   ├── plan/planSlice.js
 │       │   └── studySession/studySessionSlice.js
 │       ├── lib/
-│       │   └── api.js               # Axios instance + token injection
-│       ├── pages/                   # 14 application pages
+│       │   └── api.js                # Axios instance + Bearer token injection
+│       ├── pages/                    # 14 application pages
 │       │   ├── Dashboard.jsx
 │       │   ├── StudyFolders.jsx
 │       │   ├── FolderDetail.jsx
@@ -179,63 +181,66 @@ LearnWeb/
 │       │   ├── Profile.jsx
 │       │   ├── Login.jsx
 │       │   └── Signup.jsx
-│       ├── App.jsx                  # Routes + Navigation + Home page
-│       ├── store.js                 # Redux store configuration
-│       └── main.jsx                 # React entry point
+│       ├── App.jsx                   # Routes + Navigation + Home page
+│       ├── store.js                  # Redux store configuration
+│       └── main.jsx                  # React entry point
 │
-└── server/                          # Node.js + Express backend
+└── server/                           # Node.js + Express backend
     └── src/
         ├── config/
-        │   └── cloudinary.js        # Cloudinary SDK config
+        │   └── cloudinary.js         # Cloudinary SDK configuration
         ├── controllers/
         │   ├── auth.controller.js
         │   ├── course.controller.js
         │   ├── lecture.controller.js
+        │   ├── note.Controller.js
         │   ├── plan.Controller.js
         │   └── studySession.Controller.js
         ├── middleware/
-        │   └── auth.js              # requireAuth + requireRole
+        │   └── auth.js               # requireAuth + requireRole
         ├── models/
         │   ├── User.js
         │   ├── Course.js
         │   ├── Lecture.js
+        │   ├── Note.js
         │   ├── Plan.js
         │   └── StudySession.js
         ├── routes/
         │   ├── auth.routes.js
         │   ├── course.routes.js
         │   ├── lecture.routes.js
+        │   ├── note.Routes.js
         │   ├── feed.routes.js
         │   ├── plan.routes.js
         │   ├── studySession.Routes.js
         │   ├── file.routes.js
         │   └── health.routes.js
-        ├── app.js                   # Express app + middleware + routes
-        └── server.js                # HTTP server entry point
+        ├── app.js                    # Express app — middleware + route mounting
+        └── server.js                 # HTTP server entry point
 ```
 
 ### Request Flow
 
 ```
-Browser (React)
+Browser — React
     │
     ├── Redux Thunk dispatched
     │
-    └── Axios (lib/api.js)
+    └── Axios — lib/api.js
             │  Authorization: Bearer <JWT>
             ▼
-        Express API (Render)
+        Express API — Render
             │
-            ├── CORS → JSON parser → Morgan
+            ├── CORS → JSON Parser → Morgan Logger
             │
             ├── requireAuth middleware
             │   └── jwt.verify() → req.user = { id, role }
             │
-            ├── Route handler → Controller
+            ├── Route → Controller → Mongoose Query
             │
-            └── Mongoose → MongoDB Atlas
+            └── MongoDB Atlas
                     │
-                    └── Response JSON → Redux state update → UI re-render
+                    └── JSON Response → Redux state → UI re-render
 ```
 
 ---
@@ -247,6 +252,7 @@ Browser (React)
 | `User` | `name`, `email`, `passwordHash`, `role` | Authentication and identity |
 | `Course` | `title`, `description`, `thumbnail`, `createdBy` | Study folders per user |
 | `Lecture` | `course`, `title`, `videoUrl`, `durationSec`, `completedBy[]` | Videos inside folders |
+| `Note` | `user`, `lectureId`, `courseId`, `text` | Per-user per-lecture notes synced to database |
 | `Plan` | `user`, `date`, `tasks[]`, `completedCount`, `totalCount` | Daily task planner |
 | `StudySession` | `user`, `date`, `sessionNumber`, `duration`, `reflection`, `focusRating` | Offline Pomodoro sessions |
 
@@ -258,59 +264,66 @@ All routes are prefixed with `/api`. Protected routes require `Authorization: Be
 
 ### Auth
 ```
-POST   /api/auth/signup            Register new account
-POST   /api/auth/login             Login with email + password
-POST   /api/auth/verify-reset      Verify identity for password reset
-POST   /api/auth/reset-password    Set new password
+POST   /api/auth/signup              Register new account
+POST   /api/auth/login               Login with email and password
+POST   /api/auth/verify-reset        Verify identity for password reset
+POST   /api/auth/reset-password      Set new password
 ```
 
-### Study Folders (Courses)
+### Study Folders
 ```
-GET    /api/courses                Get all folders for logged-in user
-GET    /api/courses/:id            Get single folder (must be owner)
-POST   /api/courses                Create new folder
-PUT    /api/courses/:id            Update folder (must be owner)
-DELETE /api/courses/:id            Delete folder (must be owner)
+GET    /api/courses                  Get all folders for logged-in user
+GET    /api/courses/:id              Get single folder — must be owner
+POST   /api/courses                  Create new folder
+PUT    /api/courses/:id              Update folder — must be owner
+DELETE /api/courses/:id              Delete folder — must be owner
 ```
 
 ### Lectures
 ```
-GET    /api/courses/:courseId/lectures                          Get all lectures in folder
-POST   /api/courses/:courseId/lectures                          Add lecture (must own folder)
-PUT    /api/courses/:courseId/lectures/:lectureId               Edit lecture
-DELETE /api/courses/:courseId/lectures/:lectureId               Delete lecture
-POST   /api/courses/:courseId/lectures/:lectureId/complete      Toggle complete/incomplete
+GET    /api/courses/:courseId/lectures                        Get all lectures in folder
+POST   /api/courses/:courseId/lectures                        Add lecture — must own folder
+PUT    /api/courses/:courseId/lectures/:lectureId             Edit lecture
+DELETE /api/courses/:courseId/lectures/:lectureId             Delete lecture
+POST   /api/courses/:courseId/lectures/:lectureId/complete    Toggle complete or incomplete
+```
+
+### Notes
+```
+GET    /api/notes/:lectureId         Get saved note for a lecture
+POST   /api/notes                    Save or update note for a lecture
+DELETE /api/notes/:lectureId         Delete note for a lecture
 ```
 
 ### Feed
 ```
-GET    /api/feed                   All lectures from user's own folders
+GET    /api/feed                     All lectures from user's own folders
 ```
 
 ### Daily Plan
 ```
-GET    /api/plans/today            Get or auto-create today's plan
-POST   /api/plans/task             Add task { text, estimate }
-PATCH  /api/plans/task/:taskId     Toggle task complete
-DELETE /api/plans/task/:taskId     Delete task
-GET    /api/plans/history          Last 14 days of plans
+GET    /api/plans/today              Get or auto-create today's plan
+POST   /api/plans/task               Add task with text and estimate
+PATCH  /api/plans/task/:taskId       Toggle task complete
+DELETE /api/plans/task/:taskId       Delete task
+GET    /api/plans/history            Last 14 days of plans
 ```
 
 ### Offline Study Sessions
 ```
-POST   /api/study-sessions         Save completed Pomodoro session
-GET    /api/study-sessions/today   Get today's sessions
-GET    /api/study-sessions/history Last 14 days grouped by date
+POST   /api/study-sessions           Save a completed Pomodoro session
+GET    /api/study-sessions/today     Get today's sessions
+GET    /api/study-sessions/history   Last 14 days grouped by date
 ```
 
 ### Files
 ```
-POST   /api/files/upload           Upload image to Cloudinary
+POST   /api/files/upload             Upload image to Cloudinary
 ```
 
 ### Health
 ```
-GET    /api/health                 Server health check
+GET    /api/health                   Server health check
 ```
 
 ---
@@ -321,14 +334,14 @@ GET    /api/health                 Server health check
 
 - Node.js `>= 18.0.0`
 - npm or yarn
-- MongoDB Atlas account (free tier works)
-- Cloudinary account (free tier works)
+- MongoDB Atlas account — free tier works
+- Cloudinary account — free tier works
 
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/deepak-dev-24/learnweb.git
-cd learnweb
+git clone https://github.com/deepak-dev-24/LearnWeb.git
+cd LearnWeb
 ```
 
 ### 2. Setup the Backend
@@ -338,7 +351,7 @@ cd server
 npm install
 ```
 
-Create a `.env` file in the `server/` directory:
+Create a `.env` file inside `server/`:
 
 ```env
 PORT=5000
@@ -350,13 +363,13 @@ CLOUDINARY_API_KEY=your_api_key
 CLOUDINARY_API_SECRET=your_api_secret
 ```
 
-Start the backend server:
+Start the backend:
 
 ```bash
 npm run dev
 ```
 
-Server will run at `http://localhost:5000`
+Runs at `http://localhost:5000`
 
 ### 3. Setup the Frontend
 
@@ -365,7 +378,7 @@ cd ../client
 npm install
 ```
 
-Create a `.env` file in the `client/` directory:
+Create a `.env` file inside `client/`:
 
 ```env
 VITE_API_URL=http://localhost:5000/api
@@ -377,13 +390,13 @@ Start the frontend:
 npm run dev
 ```
 
-App will run at `http://localhost:5173`
+Runs at `http://localhost:5173`
 
-### 4. Verify Setup
+### 4. Verify Everything Works
 
-- Frontend: `http://localhost:5173`
-- Backend health: `http://localhost:5000/api/health`
-- Create an account and start building your first study folder
+- Open `http://localhost:5173` in your browser
+- Check backend: `http://localhost:5000/api/health`
+- Create an account and build your first study folder
 
 ---
 
@@ -392,58 +405,58 @@ App will run at `http://localhost:5173`
 ### Frontend → Vercel
 
 1. Push your code to GitHub
-2. Import the repository in [Vercel](https://vercel.com/)
-3. Set the **root directory** to `client`
+2. Import the repo in [Vercel](https://vercel.com/)
+3. Set root directory to `client`
 4. Add environment variable:
 ```
-   VITE_API_URL=https://your-backend.onrender.com/api
+   VITE_API_URL=https://learnweb-backend.onrender.com/api
 ```
-5. Deploy — Vercel handles the Vite build automatically
+5. Deploy — Vercel auto-builds on every push to main
 
 ### Backend → Render
 
-1. Create a new **Web Service** in [Render](https://render.com/)
+1. Create a new Web Service in [Render](https://render.com/)
 2. Connect your GitHub repository
-3. Set the **root directory** to `server`
-4. Set build command: `npm install`
-5. Set start command: `npm start`
-6. Add all environment variables from `.env.example`
+3. Set root directory to `server`
+4. Build command: `npm install`
+5. Start command: `npm start`
+6. Add all variables from `.env` example above
 7. Deploy
 
 ### Database → MongoDB Atlas
 
 1. Create a free cluster at [MongoDB Atlas](https://www.mongodb.com/atlas)
-2. Create a database user with read/write access
-3. Whitelist `0.0.0.0/0` for Render's dynamic IPs
-4. Copy the connection string into `MONGODB_URI`
+2. Create a database user with read and write permissions
+3. Whitelist `0.0.0.0/0` for Render dynamic IPs
+4. Paste the connection string into `MONGODB_URI`
 
 ---
 
 ## 🔐 Authentication Flow
 
 ```
-Signup / Login
-      │
-      ▼
-POST /api/auth/signup or /login
-      │
-      ▼
-Server issues JWT (expires in 7 days)
-      │
-      ▼
+User submits login or signup form
+            │
+            ▼
+POST /api/auth/login or /signup
+            │
+            ▼
+Server verifies credentials → issues JWT (7 day expiry)
+            │
+            ▼
 Frontend stores { user, token } in localStorage
-      │
-      ▼
-authSlice loads from localStorage on every page refresh
-      │
-      ▼
-setAuthToken(token) injects Bearer token into all Axios requests
-      │
-      ▼
-requireAuth middleware verifies token on every protected route
-      │
-      ▼
-req.user = { id, role } available in all controllers
+            │
+            ▼
+authSlice reads localStorage on every page refresh
+            │
+            ▼
+setAuthToken(token) injects Bearer header into all Axios requests
+            │
+            ▼
+requireAuth middleware verifies token on every protected API route
+            │
+            ▼
+req.user = { id, role } is available in every controller
 ```
 
 ---
@@ -454,25 +467,25 @@ req.user = { id, role } available in all controllers
 |---|---|---|
 | Authentication | Login, Signup | JWT auth, password reset, session persistence |
 | Study Folders | StudyFolders, FolderDetail, CreateFolder, ManageFolder | Personal subject organization |
-| Lecture & Player | Lectures, VideoPlayer | Video watching with Pomodoro and notes |
+| Lecture and Player | Lectures, VideoPlayer | Distraction-free video with Pomodoro timer and database notes |
 | Study Feed | Feed | Unified grid of all personal lectures |
 | Daily Plan | DailyPlan | Task management with 14-day history |
 | Offline Study | OfflineStudy, StudyHistory | Pomodoro sessions with reflection journal |
-| Dashboard & Profile | Dashboard, Profile | Stats overview and account management |
+| Dashboard and Profile | Dashboard, Profile | Stats overview and account management |
 
 ---
 
 ## 🔮 Future Improvements
 
-- [ ] Edit profile (name and email update API)
+- [ ] Edit profile — name and email update via API
 - [ ] Lecture duration tracking and watch time analytics
 - [ ] Weekly study streak visualization
-- [ ] Mobile app (React Native)
-- [ ] Keyboard shortcuts for Focus Mode
+- [ ] Mobile app using React Native
+- [ ] Keyboard shortcuts throughout Focus Mode
 - [ ] Export study history as PDF
-- [ ] Dark/light theme toggle
-- [ ] Lecture reordering via drag and drop
-- [ ] Email notification for daily plan reminders
+- [ ] Dark and light theme toggle
+- [ ] Drag and drop lecture reordering
+- [ ] Email reminders for daily plan
 
 ---
 
@@ -487,7 +500,7 @@ req.user = { id, role } available in all controllers
 
 ## 📄 License
 
-This project is licensed under the **MIT License**.  
+This project is licensed under the **MIT License**.
 See the [LICENSE](./LICENSE) file for details.
 
 ---
